@@ -4,6 +4,31 @@ from src.Utils import load_processed_data
 from loguru import logger
 
 
+def load_mean_std():
+        dataset = load_processed_data()
+
+        train_X = dataset['train_X'].astype('int32')
+
+        def calc_mean_std(X):
+            mean = np.mean(X)
+            std = np.std(X)
+            return mean, std
+
+        # De data van train_X is genoeg om de mean en std van de hele set nauwkeurig te benaderen
+        mean, std = calc_mean_std(train_X)
+
+        model_ouput_extra = dict(
+            mean=mean,
+            std=std, )
+
+        output = open('data/processed/data_mean_std.pkl', 'wb')
+        pickle.dump(model_ouput_extra, output)
+        output.close()
+        logger.info('DONE with load_proces_std_mean!')
+
+        return mean, std
+
+
 def load_processed_data_inc_mean_std():
         dataset = load_processed_data()
 

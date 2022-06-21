@@ -15,4 +15,4 @@ Keras-Applications==1.0.7
 Keras-Preprocessing==1.0.9
 matplotlib==3.0.3
 scikit-learn==0.20.3
-numpy == 1.16
+numpy == 1.22.0
